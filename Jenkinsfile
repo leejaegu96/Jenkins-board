@@ -5,7 +5,8 @@ pipeline {
 
         stage('Git Clone') {
             steps {
-                git 'https://github.com/leejaegu96/Jenkins-board.git'
+                git branch: 'main',
+                    url: 'https://github.com/leejaegu96/Jenkins-board.git'
             }
         }
 
