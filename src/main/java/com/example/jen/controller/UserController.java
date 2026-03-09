@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserRepository userRepository; 
+    private final UserRepository userRepository;
     private final BoardService boardService;
 
     @GetMapping

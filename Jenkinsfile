@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Git Clone') {
+            steps {
+                git 'https://github.com/leejaegu96/Jenkins-board.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh './gradlew build'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t spring-app .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker stop spring-app || true'
+                sh 'docker rm spring-app || true'
+                sh 'docker run -d -p 8081:8080 --name spring-app spring-app'
+            }
+        }
+
+    }
+}
